@@ -1,0 +1,29 @@
+# Diagnóstico manual: mostra DNS, resposta do servidor e pastas do FTP. Não altera nada.
+name: Diagnóstico
+
+on:
+  workflow_dispatch:
+
+jobs:
+  diagnostico:
+    runs-on: ubuntu-latest
+    steps:
+      - name: DNS
+        run: |
+          for n in natal.ipjc.org.br ipjc.org.br ftp.ipjc3.hospedagemdesites.ws ipjc3.hospedagemdesites.ws; do
+            echo "== $n"; dig +short A "$n"; dig +short CNAME "$n"
+          done
+
+      - name: Resposta do site
+        run: |
+          curl -sS -m 20 -D - -o /tmp/corpo http://natal.ipjc.org.br/ || true
+          head -c 300 /tmp/corpo; echo
+
+      - name: Pastas no FTP
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USER: ${{ secrets.FTP_USER }}
+          FTP_PASS: ${{ secrets.FTP_PASS }}
+        run: |
+          sudo apt-get install -y -qq lftp >/dev/null
+          lftp -u "$FTP_USER","$FTP_PASS" "$FTP_HOST" -e "set ssl:verify-certificate no; pwd; cls -la; echo '--- web'; cls -la web; echo '--- web/natal'; cls -la web/natal; echo '--- public_html'; cls -la public_html; echo '--- public_html/natal'; cls -la public_html/natal; bye" 2>&1 || true
