@@ -1,0 +1,21 @@
+# Verificação manual do DNS e da resposta do site. Não usa senhas.
+name: Verificar DNS
+
+on:
+  workflow_dispatch:
+
+jobs:
+  dns:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: DNS
+        run: |
+          for s in "" @ns2.wixdns.net @ns3.wixdns.net @8.8.8.8; do
+            echo "== natal.ipjc.org.br $s"; dig +short $s A natal.ipjc.org.br; dig +short $s CNAME natal.ipjc.org.br
+          done
+          echo "== ipjc.org.br NS"; dig +short NS ipjc.org.br
+      - name: Resposta do site
+        run: |
+          curl -sS -m 20 -D - -o /tmp/c http://natal.ipjc.org.br/ | head -12 || true
+          grep -o '<title>[^<]*' /tmp/c || true
