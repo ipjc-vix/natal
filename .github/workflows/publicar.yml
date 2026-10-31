@@ -18,6 +18,7 @@ jobs:
   publicar:
     name: Enviar para a Locaweb
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Conferir dados de acesso
         id: conferir
