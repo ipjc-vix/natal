@@ -33,3 +33,13 @@ A imagem que aparece ao compartilhar o link é `site/compartilhar.jpg` (1200×63
   - `FTP_USER` = `ipjc3`
   - `FTP_PASS` = senha do FTP (a mesma do painel Locaweb → Arquivos e FTP)
 - **HTTPS:** painel Locaweb → Domínios → natal.ipjc.org.br → ⋮ → Emitir Let's Encrypt.
+
+## Divulgação
+
+A pasta `divulgacao/` tem o QR Code que leva para http://natal.ipjc.org.br, em preto e em vinho (#7A1F1F), nos formatos:
+- **SVG**: vetor, para a gráfica e para o Canva/Illustrator (não perde qualidade em nenhum tamanho)
+- **PNG**: 2220×2220 px, para Word, WhatsApp etc.
+
+Esta pasta não é publicada no site. Impressão: no mínimo 2,5 cm de lado no panfleto, 5 cm ou mais no cartaz, sempre com a margem branca em volta.
+
+O endereço antigo `natal.ipjc.org.br/natal/` também leva à página (arquivo `site/natal/index.html`).
