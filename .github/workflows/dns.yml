@@ -15,6 +15,7 @@ jobs:
             echo "== natal.ipjc.org.br $s"; dig +short $s A natal.ipjc.org.br; dig +short $s CNAME natal.ipjc.org.br
           done
           echo "== ipjc.org.br NS"; dig +short NS ipjc.org.br
+          echo "== CAA (quem pode emitir certificado)"; for n in natal.ipjc.org.br ipjc.org.br org.br; do echo "-- $n"; dig +short CAA "$n"; done
       - name: Resposta do site
         run: |
           for u in http://natal.ipjc.org.br/ https://natal.ipjc.org.br/; do
