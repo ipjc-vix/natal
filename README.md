@@ -36,10 +36,17 @@ A imagem que aparece ao compartilhar o link é `site/compartilhar.jpg` (1200×63
 
 ## Divulgação
 
-A pasta `divulgacao/` tem o QR Code que leva para http://natal.ipjc.org.br, em preto e em vinho (#7A1F1F), nos formatos:
-- **SVG**: vetor, para a gráfica e para o Canva/Illustrator (não perde qualidade em nenhum tamanho)
-- **PNG**: 2220×2220 px, para Word, WhatsApp etc.
+A pasta `divulgacao/` tem os QR Codes, em preto e em vinho (#7A1F1F), em **SVG** (vetor, para a gráfica e o Canva) e **PNG** (2220×2220 px):
 
-Esta pasta não é publicada no site. Impressão: no mínimo 2,5 cm de lado no panfleto, 5 cm ou mais no cartaz, sempre com a margem branca em volta.
+| Arquivo | Endereço | Uso |
+|---|---|---|
+| `qrcode-cartaz-*` | http://natal.ipjc.org.br/?ref=cartaz | cartazes |
+| `qrcode-panfleto-*` | http://natal.ipjc.org.br/?ref=panfleto | panfletos |
+| `qrcode-natal-*` | http://natal.ipjc.org.br | uso geral (telão, slides, redes) |
+
+O `?ref=` não muda a página; serve para o contador de visitas separar os acessos de cada material.
+Para um material novo, gere outro QR com outro `ref` (ex.: `?ref=boletim`).
+
+Esta pasta não é publicada no site. Impressão: no mínimo 2,5 cm de lado no panfleto, 5 cm ou mais no cartaz, sempre com a margem branca em volta. Teste com o celular antes de mandar imprimir.
 
 O endereço antigo `natal.ipjc.org.br/natal/` também leva à página (arquivo `site/natal/index.html`).
