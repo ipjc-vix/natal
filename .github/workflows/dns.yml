@@ -17,5 +17,8 @@ jobs:
           echo "== ipjc.org.br NS"; dig +short NS ipjc.org.br
       - name: Resposta do site
         run: |
-          curl -sS -m 20 -D - -o /tmp/c http://natal.ipjc.org.br/ | head -12 || true
-          grep -o '<title>[^<]*' /tmp/c || true
+          for u in http://natal.ipjc.org.br/ https://natal.ipjc.org.br/; do
+            echo "== $u"
+            curl -sS -m 20 -D - -o /tmp/c "$u" | head -8 || true
+            grep -o '<title>[^<]*' /tmp/c || true
+          done
