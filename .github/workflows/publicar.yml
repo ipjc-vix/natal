@@ -1,13 +1,11 @@
-# Publica a pasta site/ em https://natal.ipjc.org.br (hospedagem Locaweb ipjc.org.br)
-# a cada alteração salva no branch main.
+# Cópia de reserva da pasta site/ na hospedagem Locaweb (ipjc.org.br, pasta web/natal).
+# O site oficial é publicado pelo GitHub Pages (pages.yml); esta cópia só roda manualmente
+# (Actions > Publicar na Locaweb > Run workflow) e serve para voltar à Locaweb se um dia for preciso.
 # Os dados de acesso ficam em Settings > Secrets and variables > Actions:
 #   FTP_HOST, FTP_USER e FTP_PASS
-name: Publicar no natal.ipjc.org.br
+name: Publicar na Locaweb (reserva)
 
 on:
-  push:
-    branches: [main]
-    paths: ['site/**', '.github/workflows/publicar.yml']
   workflow_dispatch:
 
 concurrency:

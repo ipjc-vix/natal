@@ -1,6 +1,6 @@
 # Santo pra Sempre · Cantata de Natal 2026 · IPJC
 
-Página publicada em **https://natal.ipjc.org.br**.
+Página publicada em **https://natal.ipjc.org.br** pelo GitHub Pages.
 
 Tudo o que estiver na pasta `site/` vai para o ar sozinho, 1 ou 2 minutos depois de salvo no branch `main`.
 Para acompanhar a publicação, abra a aba **Actions** do repositório: verde = no ar, vermelho = deu erro (clique para ver o motivo).
@@ -26,13 +26,16 @@ A imagem que aparece ao compartilhar o link é `site/compartilhar.jpg` (1200×63
 
 ## Configuração (feita uma vez)
 
-- **Hospedagem:** Locaweb, plano ipjc.org.br (Windows). O subdomínio `natal.ipjc.org.br` usa "Conteúdo de pasta" → pasta `natal`.
-- **DNS:** gerenciado no **Wix** (Domínios → ipjc.org.br → Gerenciar registros DNS). Registro A `natal` → IP da hospedagem Locaweb.
-- **Secrets do GitHub** (Settings → Secrets and variables → Actions → New repository secret):
-  - `FTP_HOST` = `ftp.ipjc3.hospedagemdesites.ws`
-  - `FTP_USER` = `ipjc3`
-  - `FTP_PASS` = senha do FTP (a mesma do painel Locaweb → Arquivos e FTP)
-- **HTTPS:** painel Locaweb → Domínios → natal.ipjc.org.br → ⋮ → Emitir Let's Encrypt.
+- **Publicação:** GitHub Pages, pelo arquivo `.github/workflows/pages.yml`.
+  Em **Settings → Pages**: Source = *GitHub Actions*, Custom domain = `natal.ipjc.org.br`, *Enforce HTTPS* marcado.
+  O arquivo `site/CNAME` guarda o domínio; não apague.
+- **DNS:** gerenciado no **Wix** (Domínios → ipjc.org.br → Gerenciar registros DNS).
+  Registro **CNAME** `natal` → `ipjc-vix.github.io`.
+- **HTTPS:** automático pelo GitHub Pages.
+- **Reserva na Locaweb:** a hospedagem ipjc.org.br (pasta `natal`) tem uma cópia da página.
+  Para atualizá-la, rode manualmente **Actions → Publicar na Locaweb (reserva)**. Os dados de acesso ficam nos
+  secrets `FTP_HOST`, `FTP_USER` e `FTP_PASS` (Settings → Secrets and variables → Actions).
+  Para voltar a servir pela Locaweb, troque no Wix o CNAME `natal` por um registro A apontando para o IP da hospedagem.
 
 ## Divulgação
 
@@ -47,6 +50,6 @@ A pasta `divulgacao/` tem os QR Codes, em preto e em vinho (#7A1F1F), em **SVG**
 O `?ref=` não muda a página; serve para o contador de visitas separar os acessos de cada material.
 Para um material novo, gere outro QR com outro `ref` (ex.: `?ref=boletim`).
 
-Esta pasta não é publicada no site. Impressão: no mínimo 2,5 cm de lado no panfleto, 5 cm ou mais no cartaz, sempre com a margem branca em volta. Teste com o celular antes de mandar imprimir.
+Esta pasta não é publicada no site. Impressão: no mínimo 2,5 cm de lado no panfleto, 5 cm ou mais no cartaz, sempre com a margem branca em volta. Os QR Codes usam `http://`; o GitHub Pages leva automaticamente para `https://`. Teste com o celular antes de mandar imprimir.
 
 O endereço antigo `natal.ipjc.org.br/natal/` também leva à página (arquivo `site/natal/index.html`).
