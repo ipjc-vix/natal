@@ -1,0 +1,36 @@
+# Uso único: apaga a pasta web/natal da hospedagem Locaweb (cópia antiga do site).
+name: Limpar pasta natal na Locaweb
+
+on:
+  workflow_dispatch:
+
+jobs:
+  limpar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Esconder a senha também codificada
+        env:
+          FTP_PASS: ${{ secrets.FTP_PASS }}
+        run: |
+          python3 - <<'PY'
+          import os, urllib.parse
+          p = os.environ["FTP_PASS"]
+          for v in {urllib.parse.quote(p, safe=""), urllib.parse.quote(p), urllib.parse.quote_plus(p)}:
+              print(f"::add-mask::{v}")
+          PY
+
+      - name: Apagar web/natal
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USER: ${{ secrets.FTP_USER }}
+          FTP_PASS: ${{ secrets.FTP_PASS }}
+        run: |
+          sudo apt-get install -y -qq lftp >/dev/null 2>&1
+          export LFTP_PASSWORD="$FTP_PASS"
+          lftp --env-password -u "$FTP_USER" "$FTP_HOST" -e "
+            set net:max-retries 2; set net:timeout 20; set ssl:verify-certificate no;
+            echo '--- antes (web/natal)'; cls -1 web/natal/;
+            rm -r web/natal;
+            echo '--- depois (web)'; cls -1 web/;
+            bye" 2>&1 | sed -E 's#ftp://[^ ]*#ftp://(oculto)#g'
