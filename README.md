@@ -48,6 +48,10 @@ A pasta `divulgacao/` tem os QR Codes, em preto e em vinho (#7A1F1F), em **SVG**
 O `?ref=` não muda a página; serve para o contador de visitas separar os acessos de cada material.
 Para um material novo, gere outro QR com outro `ref` (ex.: `?ref=boletim`).
 
+Artes para redes sociais e WhatsApp (1080×1350, formato do feed do Instagram):
+- `arte-chacara-13-12.jpg`: só a apresentação da Chácara Parreiral (13/12, 19h30)
+- `arte-todas-as-datas.jpg`: as três apresentações (a mesma do botão "Convidar alguém" da página)
+
 Esta pasta não é publicada no site. Impressão: no mínimo 2,5 cm de lado no panfleto, 5 cm ou mais no cartaz, sempre com a margem branca em volta. Os QR Codes usam `http://`; o GitHub Pages leva automaticamente para `https://`. Teste com o celular antes de mandar imprimir.
 
 O endereço antigo `natal.ipjc.org.br/natal/` também leva à página (arquivo `site/natal/index.html`).
