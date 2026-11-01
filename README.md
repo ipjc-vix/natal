@@ -32,10 +32,8 @@ A imagem que aparece ao compartilhar o link é `site/compartilhar.jpg` (1200×63
 - **DNS:** gerenciado no **Wix** (Domínios → ipjc.org.br → Gerenciar registros DNS).
   Registro **CNAME** `natal` → `ipjc-vix.github.io`.
 - **HTTPS:** automático pelo GitHub Pages.
-- **Reserva na Locaweb:** a hospedagem ipjc.org.br (pasta `natal`) tem uma cópia da página.
-  Para atualizá-la, rode manualmente **Actions → Publicar na Locaweb (reserva)**. Os dados de acesso ficam nos
-  secrets `FTP_HOST`, `FTP_USER` e `FTP_PASS` (Settings → Secrets and variables → Actions).
-  Para voltar a servir pela Locaweb, troque no Wix o CNAME `natal` por um registro A apontando para o IP da hospedagem.
+- **Locaweb:** não é usada para o natal (a hospedagem ipjc.org.br continua existindo para outras coisas da igreja).
+- **Verificar DNS:** em **Actions → Verificar DNS → Run workflow** dá para conferir para onde o endereço aponta e se o HTTPS responde.
 
 ## Divulgação
 
